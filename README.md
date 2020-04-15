@@ -1,6 +1,7 @@
 # my-project
 
-> A Vue.js project
+> https://qiita.com/_P0cChi_/items/ebf8fbf035b36218a37e
+上記の記事を参考にvue.jsで簡単なフォーム作成
 
 ## Build Setup
 

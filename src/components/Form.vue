@@ -1,14 +1,28 @@
 <template>
-  <div>Formページ</div>
+  <div>
+    Formページ
+    <HeadComp></HeadComp>
+    <textareaComp></textareaComp>
+    <StringComp></StringComp>
+  </div>
 </template>
 
 <script>
+import HeadComp from "@/components/modules/HeadComp"
+import TextareaComp from "@/components/modules/TextareaComp"
+import StringComp from "@/components/modules/StringComp"
+
 export default {
-  name: 'HelloWorld',
+  name: 'form',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  components: {
+    HeadComp,
+    TextareaComp,
+    StringComp
   }
 }
 </script>
