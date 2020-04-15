@@ -51,7 +51,7 @@ const Textarea = {
         errorMsg: "入力は必須です",
     },
     getters: {
-        getError(state, getters, roorState) {
+        getError(state, getters, rootState) {
             if(rootState.errorFlag) {
                 return null
             } else {
