@@ -8,17 +8,23 @@ const Form = {
     namespaced: true,
     state: {
         button: ["確認", "送信"],
+        component: ["TextareaComp", "StringComp"]
     },
     mutations: {},
     actions: {
         buttonActions({ commit, state, rootState}) {
             console.log("buttonAction")
-            commit("setStepCount", null, {root: true})
+            if(rootState.errorFlag) {
+                commit("setStepCount", null, {root: true})  // rootへのアクセス
+            }
         }
     },
     getters: {
         getButton (state, getters, rootState) {
             return state.button[rootState.stepCount]
+        },
+        getComponent(state, getters, rootState) {
+            return state.component[rootState.stepCount]
         }
     }
 }
@@ -52,6 +58,15 @@ const Textarea = {
     }
 }
 
+const String = {
+    namespaced: true,
+    getters: {
+        getString(state, getters, rootState) {
+            return rootState.impression
+        }
+    }
+}
+
 export default new Vuex.Store({
     state: {
         stepCount: 0,
@@ -75,6 +90,7 @@ export default new Vuex.Store({
     modules: {
         Form,
         Head,
-        Textarea
+        Textarea,
+        String
     }
 })
