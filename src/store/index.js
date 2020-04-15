@@ -6,12 +6,19 @@ Vue.use(Vuex)
 
 const Form = {
     namespaced: true,
-    state: {},
+    state: {
+        button: ["確認", "送信"],
+    },
     mutations: {},
     actions: {
         buttonActions({ commit, state, rootState}) {
             console.log("buttonAction")
             commit("setStepCount", null, {root: true})
+        }
+    },
+    getters: {
+        getButton (state, getters, rootState) {
+            return state.button[rootState.stepCount]
         }
     }
 }
@@ -29,18 +36,45 @@ const Head = {
     }
 }
 
+const Textarea = {
+    namespaced: true,
+    state: {
+        errorMsg: "入力は必須です",
+    },
+    getters: {
+        getError(state, getters, roorState) {
+            if(rootState.errorFlag) {
+                return null
+            } else {
+                return state.errorMsg
+            }
+        }
+    }
+}
+
 export default new Vuex.Store({
     state: {
-        stepCount: 0
+        stepCount: 0,
+        impression: "",
+        errorFlag: false    //　trueなら通過
     },
     mutations: {
         setStepCount (state) {
             console.log("rootsetStepCount")
             state.stepCount++
+        },
+        updateImpression(state, value) {
+            state.impression = value
+            if(state.impression) {
+                state.errorFlag = true
+            } else {
+                state.errorFlag = false
+            }
         }
     },
     modules: {
         Form,
-        Head
+        Head,
+        Textarea
     }
 })
