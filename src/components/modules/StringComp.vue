@@ -1,13 +1,13 @@
 <template>
-  <div>Formページ</div>
+  <p>{{string}}</p>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'stringComp',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      string: '入力された感想をここに出す'
     }
   }
 }
