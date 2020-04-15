@@ -2,8 +2,10 @@
   <div>
     Formページ
     <HeadComp></HeadComp>
-    <textareaComp></textareaComp>
-    <StringComp></StringComp>
+    <component
+    :is="isComponent"
+    ></component>
+    <button v-on:click="buttonAction">{{button}}</button>
   </div>
 </template>
 
@@ -11,14 +13,17 @@
 import HeadComp from "@/components/modules/HeadComp"
 import TextareaComp from "@/components/modules/TextareaComp"
 import StringComp from "@/components/modules/StringComp"
+import { mapActions, mapGetters } from "vuex"
 
 export default {
   name: 'form',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  },
+  methods: mapActions( "Form", {
+    "buttonAction": "buttonAction"
+  }),
+  computed: mapGetters("Form", {
+    "button": "getButton",
+    "isComponent": "getComponent"
+  }),
   components: {
     HeadComp,
     TextareaComp,
