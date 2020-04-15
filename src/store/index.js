@@ -12,7 +12,7 @@ const Form = {
     },
     mutations: {},
     actions: {
-        buttonActions({ commit, state, rootState}) {
+        buttonAction({ commit, state, rootState}) {
             console.log("buttonAction")
             if(rootState.errorFlag) {
                 commit("setStepCount", null, {root: true})  // rootへのアクセス
@@ -51,7 +51,7 @@ const Textarea = {
         errorMsg: "入力は必須です",
     },
     getters: {
-        getError(state, getters, roorState) {
+        getError(state, getters, rootState) {
             if(rootState.errorFlag) {
                 return null
             } else {
