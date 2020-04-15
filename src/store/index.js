@@ -12,7 +12,7 @@ const Form = {
     },
     mutations: {},
     actions: {
-        buttonActions({ commit, state, rootState}) {
+        buttonAction({ commit, state, rootState}) {
             console.log("buttonAction")
             if(rootState.errorFlag) {
                 commit("setStepCount", null, {root: true})  // rootへのアクセス
